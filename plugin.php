@@ -105,43 +105,6 @@ add_filter('wp_cli_opts_update', function($argv) {
   return $cmd;
 });
 
-add_filter('wp_cli_fbstats_url', function($argv) {
-  $cmd = new HashBang(function($url) {
-    $fb = new FatPandaStats_Facebook();
-    $res = $fb->getURLInfo($url);
-    print_r($res);
-  });
-
-  $cmd->addArg('url');
-  
-  return $cmd;
-});
-
-add_filter('wp_cli_fbstats_gapi', function($argv) {
-  $cmd = new HashBang(function($url_endpoint) {
-    $fb = new FatPandaStats_Facebook();
-    $res = $fb->gapi($url_endpoint);
-    print_r($res);
-  });
-
-  $cmd->addArg('url_endpoint');
-
-  return $cmd;
-});
-
-add_filter('wp_cli_fbstats_getPagePosts', function($argv) {
-  $cmd = new HashBang(function($page_id, $checkwindow) {
-    $fb = new FatPandaStats_Facebook();
-    $res = $fb->getPagePosts($page_id, $checkwindow);
-    print_r($res);
-  });
-
-  $cmd->addArg('page_id');
-  $cmd->addArg('pollwindow', false);
-
-  return $cmd;
-});
-
 // https://github.com/Problematic/HashBang
 class HashBang {
 
