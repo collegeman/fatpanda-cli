@@ -1,0 +1,9 @@
+###Getting it working with WordPress MU
+
+In your **wp-config.php** file, add the following snippet somewhere below the definition statement for the constant `DOMAIN_CURRENT_SITE`:
+
+```
+if (php_sapi_name() == 'cli') {
+  $_SERVER['HTTP_HOST'] = DOMAIN_CURRENT_SITE;
+}
+```
